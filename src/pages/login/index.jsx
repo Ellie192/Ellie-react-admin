@@ -2,27 +2,30 @@ import React,{ Component } from 'react';
 import { Form, Icon, Input, Button, } from 'antd';
 
 
-import logo from './logo.png'
+import logo from './logo.png';
+import './index.less';
+
 
 export default class Login extends Component{
     render(){
         const Item = Form.Item;
         return(
-            <div>
-                <header>
+            <div  className="login" >
+                <header className="login-header">
                     <img src={logo} alt="logo"/>
                     <h1>React项目: 后台管理系统</h1>
                 </header>
-                <section>
-                    <Form>
+                <section className="login-content">
+                    <Form className="login-form">
+                        <h2>用户登录</h2>
                         <Item>
-                            <Input prefix={<Icon type="user" />} placeholder='用户名'/>
+                            <Input className="login-input" prefix={<Icon type="user" />} placeholder='用户名'/>
                         </Item>
                         <Item>
-                            <Input prefix={<Icon type="lock" />} placeholder='密码'/>
+                            <Input className="login-input"  prefix={<Icon type="lock" />} placeholder='密码' type="password"/>
                         </Item>
                         <Item>
-                            <Button type='primary'>登录</Button>
+                            <Button type='primary' htmlType="submit" className="login-btn">登录</Button>
                         </Item>
                     </Form>
                 </section>
