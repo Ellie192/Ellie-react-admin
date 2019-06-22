@@ -1,8 +1,15 @@
 import axios from "axios";
 import {message} from "antd";
 
-export default function Ajax(url,data,mothed) {
-  return axios[mothed](url, data)
+export default function Ajax(url,data,method) {
+  method = method.toLowerCase();
+  if(method === 'get'){
+    data = {
+      params:data
+    }
+  }
+
+  return axios[method](url, data)
     .then(res => {
       if(res.data.status === 0){
         return res.data.data;
