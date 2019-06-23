@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Layout,  Breadcrumb} from 'antd';
+import {Layout} from 'antd';
 import LiftNav from '../../components/left-nav';
 import HeaderMain from '../../components/header-main';
 const {Header, Content, Footer, Sider} = Layout;
@@ -14,10 +14,11 @@ export default class Admin extends Component {
   };
 
   render() {
+    const { collapsed } = this.state;
     return (
       <Layout style={{minHeight: '100vh'}}>
-        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-          <LiftNav collapsed={this.state.collapsed} onCollapse={this.onCollapse} />
+        <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+          <LiftNav collapsed={collapsed} onCollapse={this.onCollapse} />
         </Sider>
         <Layout>
           <Header style={{ background: '#fff', padding: 0, minHeight: 100 }}>
