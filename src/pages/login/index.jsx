@@ -3,7 +3,7 @@ import {Form, Icon, Input, Button} from 'antd';
 import {login} from '../../api/ajax/index';
 
 
-import logo from './logo.png';
+import logo from '../../assets/images/logo.png';
 import './index.less';
 
 const Item = Form.Item;
