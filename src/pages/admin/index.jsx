@@ -17,7 +17,6 @@ export default class Admin extends Component {
   async componentWillMount() {
     //判断登录是否成功
     const user = getItem();
-    console.log(user)
     if(user && user._id){
 
      const result = await reqValidateUserInfo(user._id);
