@@ -1,7 +1,7 @@
 import axios from "axios";
 import {message} from "antd";
 
-export default function Ajax(url,data,method) {
+export default function Ajax(url,data = {},method = 'GET') {
   method = method.toLowerCase();
   if(method === 'get'){
     data = {

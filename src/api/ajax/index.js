@@ -7,7 +7,7 @@ import {message} from 'antd';
 export const reqlogin = (username, password) => Ajax('/login',{username, password},'post');
 
 //请求验证用户信息
-export const reqValidateUserInfo = (id) => Ajax('/validate/user',{id},'POST')
+export const reqValidateUserInfo = (id) => Ajax('/validate/user',{id},'POST');
 
 //请求天气
 
@@ -30,3 +30,6 @@ export const reqWeather = function() {
   })
 
 };
+
+//请求category数据
+export const reqCategories = (parentId) => Ajax('manage/category/list',{parentId});

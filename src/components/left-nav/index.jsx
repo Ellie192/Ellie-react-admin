@@ -58,14 +58,15 @@ class LeftNav extends Component {
     }
 
   render() {
+    const {pathname} = this.props.location;
     const { collapsed } = this.props;
     return (
       <div>
-        <div className="my-nav-logo">
+        <Link className="my-nav-logo" to='/home'>
           <img src={logo} alt="logo"/>
           <h1 style={{display: collapsed ? 'none' : 'block'}}>硅谷后台</h1>
-        </div>
-        <Menu theme="dark" defaultSelectedKeys={[this.selectedkey]} defaultOpenKeys={[this.openkey]} mode="inline">
+        </Link>
+        <Menu theme="dark" selectedKeys={[pathname]} defaultOpenKeys={[this.openkey]} mode="inline">
           {this.menus}
         </Menu>
       </div>
