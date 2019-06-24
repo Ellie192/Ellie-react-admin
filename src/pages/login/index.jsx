@@ -5,7 +5,7 @@ import {reqlogin} from '../../api/ajax/index';
 
 import logo from '../../assets/images/logo.png';
 import './index.less';
-
+import { setItem } from '../../utils/storage_tools'
 const Item = Form.Item;
 
 function Login(props) {
@@ -34,6 +34,7 @@ function Login(props) {
         const {username, password} = values;
         const result = await reqlogin(username, password);
         if (result) {
+          setItem(result);
           props.history.replace('/');
         } else {
           props.form.resetFields(['password'])

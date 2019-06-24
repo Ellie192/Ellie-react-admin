@@ -21,9 +21,9 @@ class LeftNav extends Component {
       </Link>
     </Item>
 };
-
+  //渲染一次，只做一次，在渲染之前做
   componentWillMount() {
-      const {pathname} = this.props.location;
+    const {pathname} = this.props.location;
     //生成菜单
     this.menus = menuList.map((menu) => {
       if(menu.children){
