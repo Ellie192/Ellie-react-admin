@@ -31,13 +31,17 @@ class HeaderMain extends Component {
       })
     },1000);
     //发送请求
-    const result =await reqWeather();
+    const {promise,cancel} =reqWeather();
+    this.cancel = cancel;
+    const result = await promise;
     if(result) {
       this.setState(result)
     }
   }
   componentWillUnmount() {
     clearInterval(this.timer);
+    //取消ajax请求
+    this.cancel();
   }
 
   componentWillReceiveProps(nextProps, nextContext) {

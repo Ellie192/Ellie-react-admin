@@ -24,6 +24,7 @@ class LeftNav extends Component {
   //渲染一次，只做一次，在渲染之前做
   componentWillMount() {
     const {pathname} = this.props.location;
+    let isHome = true;
     //生成菜单
     this.menus = menuList.map((menu) => {
       if(menu.children){
@@ -42,6 +43,7 @@ class LeftNav extends Component {
               if(item.key === pathname){
                 //显示页面是二级菜单，需要展开其父级菜单
                 this.openkey = menu.key;
+                isHome = false;
               }
 
               return this.createMenu(item);
@@ -50,11 +52,13 @@ class LeftNav extends Component {
         </SubMenu>
 
       }else{
+        if (menu.key === pathname) isHome = false;
         //一级菜单
         return  this.createMenu(menu);
       }
     })
-    this.selectedkey = pathname;
+    // 初始化选中菜单
+    this.selectedKey = isHome ? '/home' : pathname;
     }
 
   render() {
@@ -66,7 +70,7 @@ class LeftNav extends Component {
           <img src={logo} alt="logo"/>
           <h1 style={{display: collapsed ? 'none' : 'block'}}>硅谷后台</h1>
         </Link>
-        <Menu theme="dark" selectedKeys={[pathname]} defaultOpenKeys={[this.openkey]} mode="inline">
+        <Menu theme="dark" defaultSelectedKeys={[this.selectedKey]} selectedKeys={[pathname]} defaultOpenKeys={[this.openkey]} mode="inline">
           {this.menus}
         </Menu>
       </div>

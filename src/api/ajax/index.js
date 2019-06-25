@@ -12,9 +12,11 @@ export const reqValidateUserInfo = (id) => Ajax('/validate/user',{id},'POST');
 //请求天气
 
 export const reqWeather = function() {
-  return new Promise((resolve, reject) => {
-    jsonp('http://api.map.baidu.com/telematics/v3/weather?location=深圳&output=json&ak=3p49MVra6urFRGOT9s8UBWr2',{},function(err,data){
+  let cancel = null;
+  const promise = new Promise((resolve, reject) => {
+    cancel = jsonp('http://api.map.baidu.com/telematics/v3/weather?location=深圳&output=json&ak=3p49MVra6urFRGOT9s8UBWr2',{},function(err,data){
       if(!err){
+
         const {weather,dayPictureUrl} = data.results[0].weather_data[0];
         resolve(
           {
@@ -26,8 +28,13 @@ export const reqWeather = function() {
         message.error('请求天气数据失败，请刷新重试');
         reject();
       }
-    })
-  })
+    });
+  });
+
+  return {
+    promise,
+    cancel
+  }
 
 };
 

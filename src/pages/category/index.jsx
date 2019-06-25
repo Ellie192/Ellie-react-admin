@@ -73,6 +73,7 @@ export default class Category extends Component {
             pageSizeOptions : ['3','6','9','12'],
             showQuickJumper : true,
           }}
+          rowKey='_id' //表格行 key 的取值，可以是字符串或一个函数
         />
       </Card>
 
