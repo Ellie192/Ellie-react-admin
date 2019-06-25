@@ -12,7 +12,7 @@ export default function Ajax(url,data = {},method = 'GET') {
   return axios[method](url, data)
     .then(res => {
       if(res.data.status === 0){
-        return res.data.data;
+        return res.data.data || {};
       }else{
         message.error(res.data.msg);
       }

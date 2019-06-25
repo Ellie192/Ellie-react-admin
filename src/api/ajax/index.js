@@ -42,3 +42,5 @@ export const reqWeather = function() {
 export const reqCategories = (parentId) => Ajax('manage/category/list',{parentId});
 
 export const reqAddCategory = (parentId, categoryName) => Ajax('/manage/category/add', {parentId, categoryName}, 'POST');
+
+export const reqUpdateCategoryName = (categoryId, categoryName) => Ajax('/manage/category/update', {categoryId, categoryName}, 'POST');
