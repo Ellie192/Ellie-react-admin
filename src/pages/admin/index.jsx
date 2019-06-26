@@ -8,7 +8,7 @@ import {reqValidateUserInfo} from '../../api/ajax';
 
 import Home from '../home';
 import Category from '../category';
-import Product from '../produce';
+import Product from '../product';
 import User from '../user';
 import Role from '../role';
 import Line from '../charts/line';

@@ -39,8 +39,10 @@ export const reqWeather = function() {
 };
 
 //请求category数据
-export const reqCategories = (parentId) => Ajax('manage/category/list',{parentId});
+export const reqCategories = (parentId) => Ajax('/manage/category/list',{parentId});
 
 export const reqAddCategory = (parentId, categoryName) => Ajax('/manage/category/add', {parentId, categoryName}, 'POST');
 
 export const reqUpdateCategoryName = (categoryId, categoryName) => Ajax('/manage/category/update', {categoryId, categoryName}, 'POST');
+
+export const reqProducts = (pageNum, pageSize) => Ajax('/manage/product/list', {pageNum, pageSize});

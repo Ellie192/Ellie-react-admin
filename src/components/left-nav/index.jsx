@@ -23,7 +23,13 @@ class LeftNav extends Component {
 };
   //渲染一次，只做一次，在渲染之前做
   componentWillMount() {
-    const {pathname} = this.props.location;
+    let {pathname} = this.props.location;
+
+    const pathnameReg = /^\/product\//;
+
+    if (pathnameReg.test(pathname)) {
+      pathname = pathname.slice(0, 8);
+    }
     let isHome = true;
     //生成菜单
     this.menus = menuList.map((menu) => {
@@ -62,7 +68,6 @@ class LeftNav extends Component {
     }
 
   render() {
-    const {pathname} = this.props.location;
     const { collapsed } = this.props;
     return (
       <div>
@@ -70,7 +75,7 @@ class LeftNav extends Component {
           <img src={logo} alt="logo"/>
           <h1 style={{display: collapsed ? 'none' : 'block'}}>硅谷后台</h1>
         </Link>
-        <Menu theme="dark" defaultSelectedKeys={[this.selectedKey]} selectedKeys={[pathname]} defaultOpenKeys={[this.openkey]} mode="inline">
+        <Menu theme="dark" defaultSelectedKeys={[this.selectedKey]}  defaultOpenKeys={[this.openkey]} mode="inline">
           {this.menus}
         </Menu>
       </div>

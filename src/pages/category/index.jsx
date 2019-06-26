@@ -13,12 +13,17 @@ export default class Category extends Component {
     isShowAddCategory:false, //显示添加品类
     isShowUpdateCategoryName:false //显示修改分类名称
   }
+  // 初始化临时保存分类数据（否则下面this.category.name会报错）
+  category = {};
+
   componentDidMount(){
     this.fetchCategories('0')
   }
 
   fetchCategories = async (parentId) => {
+
     const result = await reqCategories(parentId);
+    console.log(result)
     if(result) {
       if(parentId === '0'){
         this.setState({categories:result})
@@ -101,7 +106,6 @@ export default class Category extends Component {
     })
   };
 
-  category = {};
   saveCategory = (category) => {
     return () => {
       // 保存要更新的分类数据

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export default class Produce extends Component {
+export default class Detail extends Component {
   render() {
     return <div>
-      Produce
+      Detail
     </div>;
   }
 }

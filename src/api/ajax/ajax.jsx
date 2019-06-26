@@ -3,15 +3,18 @@ import {message} from "antd";
 
 export default function Ajax(url,data = {},method = 'GET') {
   method = method.toLowerCase();
+  let reqParams = data;
   if(method === 'get'){
-    data = {
+    reqParams = {
       params:data
     }
   }
-
-  return axios[method](url, data)
+  console.log(reqParams)
+  return axios[method](url, reqParams)
     .then(res => {
+
       if(res.data.status === 0){
+
         return res.data.data || {};
       }else{
         message.error(res.data.msg);
