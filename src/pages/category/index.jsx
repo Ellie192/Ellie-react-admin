@@ -116,6 +116,7 @@ export default class Category extends Component {
       if (!err) {
         const { categoryName } = values;
         const categoryId = this.category._id;
+        console.log(categoryName,categoryId,this.category)
         // 发送请求
         const result = await reqUpdateCategoryName(categoryId, categoryName);
 
@@ -125,6 +126,7 @@ export default class Category extends Component {
             let { _id, name, parentId } = category;
             // 找到对应id的category，修改分类名称
             if (_id === categoryId) {
+              console.log(category)
               name = categoryName;
               return {
                 _id,
@@ -164,7 +166,6 @@ export default class Category extends Component {
         className: 'category-operation',
         //改变当列的显示
         render: category => {
-          this.category = category;
 
           return <div>
             <MyButton onClick={this.saveCategory(category)}>{'修改名称'}</MyButton>
