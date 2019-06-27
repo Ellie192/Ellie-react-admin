@@ -9,7 +9,6 @@ export default function Ajax(url,data = {},method = 'GET') {
       params:data
     }
   }
-  console.log(reqParams)
   return axios[method](url, reqParams)
     .then(res => {
 
