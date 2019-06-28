@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Form,Input } from 'antd';
+import { Form, Input } from 'antd';
 import PropTypes from 'prop-types';
 
 class UpdateCategoryNameForm extends Component {
   static propTypes = {
     categoryName: PropTypes.string.isRequired
   };
+
   validator = (rule, value, callback) => {
     if (!value) {
       callback('请输入分类名称');
@@ -15,8 +16,10 @@ class UpdateCategoryNameForm extends Component {
       callback();
     }
   };
+
   render() {
     const { getFieldDecorator } = this.props.form;
+
     return <Form>
       <Form.Item>
         {
@@ -24,15 +27,17 @@ class UpdateCategoryNameForm extends Component {
             'categoryName',
             {
               initialValue: this.props.categoryName,
-              rules: [{validator: this.validator}]
+              rules: [{
+                validator: this.validator
+              }]
             }
           )(
-            <Input/>
+            <Input />
           )
         }
-
       </Form.Item>
     </Form>;
   }
 }
-export default Form.create()(UpdateCategoryNameForm)
+
+export default Form.create()(UpdateCategoryNameForm);
